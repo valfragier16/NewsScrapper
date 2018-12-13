@@ -11,21 +11,20 @@ var router = express.Router();
 // Scrape data from NPR website and save to mongodb
 router.get("/scrape", function(req, res) {
   // Grab the body of the html with request
-  request("https://www.nytimes.com/", function(error, response, html) {
+  request("https://www.cnn.com/business/tech", function(error, response, html) {
     // Load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Grab every part of the html that contains a separate article
-    $("div.archivelist > article").each(function(i, element) {
+    $("h2.top stories").each(function(i, element) {
 
       // Save an empty result object
       var result = {};
 
       // Get the title and description of every article, and save them as properties of the result object
       // result.title saves entire <a> tag as it appears on NPR website
-      // Add the title and summary of every link, and save them as properties of the result object
-      result.title = $(this).children("h2").text();
-      result.summary = $(this).children(".summary").text();
-      result.link = $(this).children("h2").children("a").attr("href");
+      result.title = $(element).children("div.item-info").children("h2.title").html();
+      // result.description saves text description
+			result.description = $(element).children("div.item-info").children("p.teaser").children("a").text();
       
       // Using our Article model, create a new entry
       var entry = new Article(result);
