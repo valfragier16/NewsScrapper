@@ -22,9 +22,10 @@ router.get("/scrape", function(req, res) {
 
       // Get the title and description of every article, and save them as properties of the result object
       // result.title saves entire <a> tag as it appears on NPR website
-      result.title = $(element).children("div.item-info").children("h2.title").html();
-      // result.description saves text description
-			result.description = $(element).children("div.item-info").children("p.teaser").children("a").text();
+      // Add the title and summary of every link, and save them as properties of the result object
+      result.title = $(this).children("h2").text();
+      result.summary = $(this).children(".summary").text();
+      result.link = $(this).children("h2").children("a").attr("href");
       
       // Using our Article model, create a new entry
       var entry = new Article(result);
