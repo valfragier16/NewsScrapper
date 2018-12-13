@@ -1,0 +1,28 @@
+{
+  "name": "NewsScrapper",
+  "version": "1.0.0",
+  "description": "GW Homework Week 18",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express-handlebars": "^3.0.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valfragier16/NewsScrapper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valfragier16/NewsScrapper/issues"
+  },
+  "homepage": "https://github.com/valfragier16/NewsScrapper#readme"
+}
