@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
+var axios = require("axios");
 // Requiring Comment and Article models
 var Comment = require("./models/Comment.js");
 var Article = require("./models/Article.js");
@@ -36,7 +37,9 @@ app.use("/", articleRouter);
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-var URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/news-scrapper18'; 
+// var URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/news-scrapper18'; 
+// var MONGODB_URI = process.env.MONGODB_URI || localhost:27017/
+var URI = process.env.MLAB_URL || 'mongodb://localhost:27017/news-scrapper18';
 mongoose.connect(URI);
 var db = mongoose.connection;
 
@@ -54,4 +57,12 @@ db.once("open", function() {
 // Listen on port 3000
 app.listen(port, function() {
   console.log("App running on port 3000!");
-});
+// });
+
+// console.log("\n******************************************\n" +
+//             "Grabbing every article headline and link\n" +
+//             "from the LIVEScience website:" +
+//             "\n******************************************\n" +
+//             "App running on port " + PORT + "!"); 
+
+          });

@@ -4,27 +4,35 @@ var cheerio = require("cheerio");
 var Comment = require("../models/Comment.js");
 var Article = require("../models/Article.js");
 var router = express.Router();
+var axios = require("axios");
 
 
 // ============= ROUTES FOR HOME PAGE =============//
 
 // Scrape data from NPR website and save to mongodb
 router.get("/scrape", function(req, res) {
+  
   // Grab the body of the html with request
-  request("https://www.cnn.com/business/tech", function(error, response, html) {
+  request("https://www.livescience.com/space?type=article", function(error, response, html) {
     // Load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Grab every part of the html that contains a separate article
-    $("h2.top stories").each(function(i, element) {
+    $("h2").each(function(i, element) {
 
       // Save an empty result object
       var result = {};
 
       // Get the title and description of every article, and save them as properties of the result object
       // result.title saves entire <a> tag as it appears on NPR website
-      result.title = $(element).children("div.item-info").children("h2.title").html();
+    //   var title = $(element).text();
+
+    // // Find the h4 tag's parent a-tag, and save it's href value as "link"
+    // var link = $(element).children().attr("href");
+      
+      
+      result.title = $(element).text();
       // result.description saves text description
-			result.description = $(element).children("div.item-info").children("p.teaser").children("a").text();
+			result.description = $(element).children().attr("href");
       
       // Using our Article model, create a new entry
       var entry = new Article(result);
@@ -81,79 +89,6 @@ router.post("/save/:id", function(req, res) {
     }
   });
 });
-
-
-// ============= ROUTES FOR SAVED ARTICLES PAGE =============//
-
-// Grab an article by it's ObjectId
-router.get("/articles/:id", function(req, res) {
-  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-  Article.findOne({ "_id": req.params.id })
-  // ..and populate all of the comments associated with it
-  .populate("comments")
-  // now, execute our query
-  .exec(function(error, doc) {
-    // Log any errors
-    if (error) {
-      console.log(error);
-    }
-    // Otherwise, send the doc to the browser as a json object
-    else {
-      res.json(doc);
-    }
-  });
-});
-
-// Create a new comment
-router.post("/comment/:id", function(req, res) {
-  // Create a new comment and pass the req.body to the entry
-  var newComment = new Comment(req.body);
-  // And save the new comment the db
-  newComment.save(function(error, newComment) {
-    // Log any errors
-    if (error) {
-      console.log(error);
-    }
-    // Otherwise
-    else {
-      // Use the article id to find and update it's comment
-      Article.findOneAndUpdate({ "_id": req.params.id }, { $push: { "comments": newComment._id }}, { new: true })
-      // Execute the above query
-      .exec(function(err, doc) {
-        // Log any errors
-        if (err) {
-          console.log(err);
-        }
-        else {
-          console.log("doc: ", doc);
-          // Or send the document to the browser
-          res.send(doc);
-        }
-      });
-    }
-  });
-});
-
-// Remove a saved article
-router.post("/unsave/:id", function(req, res) {
-  // Use the article id to find and update it's saved property to false
-  Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": false })
-  // Execute the above query
-  .exec(function(err, doc) {
-    // Log any errors
-    if (err) {
-      console.log(err);
-    }
-    // Log result
-    else {
-      console.log("Article Removed");
-    }
-  });
-  res.redirect("/saved");
-});
-
-
-module.exports = router;
 
 
 // ============= ROUTES FOR SAVED ARTICLES PAGE =============//
