@@ -12,3 +12,19 @@ This app uses the technologies listed below:
     <li>Cherrio</li>
     <li>Axios</li>
 </ol>
+
+<h2>Demo</h2>
+NewsScrapper is deployed to Heroku. Please check it out <a href="https://news-scrapper18.herokuapp.com/" target="_blank">here</a>.
+
+<h2>Installation</h2>
+To install the application follow the instructions below:
+<ol>
+    <li>git clone 
+    <li>cd NewsScrapper</li>
+    <li>npm install</li>
+
+<h2>Run Locally</h2>
+Once you have completed the installation, to access the application in your browser, first run <i>node server.js</i> in your terminal within the <i>NewsScrapper</i> folder.
+If done properly, your terminal should display the following, which will include a list of articles and their links:
+
+<img src="public/assets/img/terminal.JPG">
