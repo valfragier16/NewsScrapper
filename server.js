@@ -37,9 +37,6 @@ app.use("/", articleRouter);
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-// var URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/news-scrapper18'; 
-// var MONGODB_URI = process.env.MONGODB_URI || localhost:27017/
-// var URI = process.env.MLAB_URL || 'mongodb://localhost:27017/news-scrapper18';
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news-scrapper18";
 
 mongoose.connect(MONGODB_URI);
