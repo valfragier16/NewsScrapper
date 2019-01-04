@@ -58,10 +58,10 @@ router.get("/scrape", function(req, res) {
       var result = {};
       
       
-      result.title = $(element).text();
+      result.title = $(element).text().href();
       // result.description saves text description
-			result.description = $(element).children().attr("href");
-      
+      result.description = $(element).children().attr("href");
+
       // Using our Article model, create a new entry
       var entry = new Article(result);
 

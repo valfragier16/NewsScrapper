@@ -1,7 +1,7 @@
 # NewsScrapper
 GW Homework Week 18
 
-This app allows the user to view Live Science articles, save their favorites onto another page, and comment on the saved articles. Each article is displayed with a headline which is also a link to the source of the article and a brief description that includes the published date. 
+This app allows the user to view Live Science articles, save their favorites onto another page, and comment on the saved articles. Each article is displayed with a headline which is also a link to the source of the article and a brief description that includes the published date. All articles are presented by <a href="https://www.livescience.com/space?type=article " target="_blank">LiveScience</a>.
 
 This app uses the technologies listed below:
 
