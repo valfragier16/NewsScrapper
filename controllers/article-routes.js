@@ -28,7 +28,9 @@ axios.get("https://www.livescience.com/space?type=article").then(function(respon
   $("h2").each(function(i, element) {
 
     // Save the text of the h4-tag as "title"
+    
     var title = $(element).text();
+    
 
     // Find the h4 tag's parent a-tag, and save it's href value as "link"
     var link = $(element).children().attr("href");
@@ -58,10 +60,15 @@ router.get("/scrape", function(req, res) {
       var result = {};
       
       
-      result.title = $(element).text().href();
+      // result.title = $(element).text();
+      // // result.description saves text description
+      // result.description = $(element).children().attr("href");
+      
+      result.title = $(element).children("a").children("h2.title").html();
       // result.description saves text description
-      result.description = $(element).children().attr("href");
-
+			result.description = $(element).children("div.item-info").children("p.mod-copy").children("a").text();
+      
+      
       // Using our Article model, create a new entry
       var entry = new Article(result);
 
