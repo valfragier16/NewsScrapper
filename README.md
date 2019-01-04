@@ -19,7 +19,7 @@ NewsScrapper is deployed to Heroku. Please check it out <a href="https://news-sc
 <h2>Installation</h2>
 To install the application follow the instructions below:
 <ol>
-    <li>git clone 
+    <li>git clone git@github.com:valfragier16/NewsScrapper.git</li>
     <li>cd NewsScrapper</li>
     <li>npm install</li>
 
