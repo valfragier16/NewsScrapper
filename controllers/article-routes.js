@@ -27,25 +27,23 @@ axios.get("https://www.livescience.com/space?type=article").then(function(respon
   // With cheerio, find each h2-tag with the class "headline-link" and loop through the results
   $("h2").each(function(i, element) {
 
-    // Save the text of the h4-tag as "title"
+    // Save the text of the h2-tag as "title"
     
     var title = $(element).text();
     
-
-    // Find the h4 tag's parent a-tag, and save it's href value as "link"
-    var link = $(element).children().attr("href");
+    var description = $(element).children().attr("href");
 
     // Make an object with data we scraped for this h4 and push it to the results array
     results.push({
       title: title,
-      link: link
+      description: description
     });
   });
 
   console.log(results);
 });
 
-// Scrape data from NPR website and save to mongodb
+// Scrape data from LiveScience website and save to mongodb
 router.get("/scrape", function(req, res) {
   
   // Grab the body of the html with request
@@ -65,7 +63,7 @@ router.get("/scrape", function(req, res) {
       
       result.title = $(element).children("a").children("h2.title").html();
       // result.description saves text description
-			result.description = $(element).children("div.item-info").children("p.mod-copy").children("a").text();
+			result.description = $(element).children("div.date-posted").children("p.mod-copy").children("a").text();
       
       
       // Using our Article model, create a new entry
