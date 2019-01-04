@@ -9,13 +9,13 @@ var axios = require("axios");
 
 // ============= ROUTES FOR HOME PAGE =============//
 
-// First, tell the console what server2.js is doing
+
 console.log("\n******************************************\n" +
             "Grabbing every article headline and link\n" +
             "from the LIVEScience website:" +
             "\n******************************************\n");
 
-// Making a request via axios for `nhl.com`'s homepage
+// Making a request via axios for `livescience's homepage
 axios.get("https://www.livescience.com/space?type=article").then(function(response) {
 
   // Load the body of the HTML into cheerio
@@ -24,7 +24,7 @@ axios.get("https://www.livescience.com/space?type=article").then(function(respon
   // Empty array to save our scraped data
   var results = [];
 
-  // With cheerio, find each h4-tag with the class "headline-link" and loop through the results
+  // With cheerio, find each h2-tag with the class "headline-link" and loop through the results
   $("h2").each(function(i, element) {
 
     // Save the text of the h4-tag as "title"
@@ -42,7 +42,6 @@ axios.get("https://www.livescience.com/space?type=article").then(function(respon
     });
   });
 
-  // After looping through each h4.headline-link, log the results
   console.log(results);
 });
 
