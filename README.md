@@ -28,3 +28,9 @@ Once you have completed the installation, to access the application in your brow
 If done properly, your terminal should display the following, which will include a list of articles and their links:
 
 <img src="public/assets/img/terminal.JPG">
+
+<h2>Application</h2>
+
+The app will look like the image below:
+
+<img src="public/assets/img/app.PNG">
