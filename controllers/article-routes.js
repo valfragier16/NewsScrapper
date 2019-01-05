@@ -9,13 +9,13 @@ var axios = require("axios");
 
 // ============= ROUTES FOR HOME PAGE =============//
 
-
+// First, tell the console what server.js is doing
 console.log("\n******************************************\n" +
             "Grabbing every article headline and link\n" +
             "from the LIVEScience website:" +
             "\n******************************************\n");
 
-// Making a request via axios for `livescience's homepage
+// Making a request via axios for `LIVEScience`'s homepage
 axios.get("https://www.livescience.com/space?type=article").then(function(response) {
 
   // Load the body of the HTML into cheerio
@@ -28,22 +28,23 @@ axios.get("https://www.livescience.com/space?type=article").then(function(respon
   $("h2").each(function(i, element) {
 
     // Save the text of the h2-tag as "title"
-    
     var title = $(element).text();
-    
-    var description = $(element).children().attr("href");
+
+    // Find the h4 tag's parent a-tag, and save it's href value as "link"
+    var link = $(element).children().attr("href");
 
     // Make an object with data we scraped for this h4 and push it to the results array
     results.push({
       title: title,
-      description: description
+      link: link
     });
   });
 
+  // After looping through each h4.headline-link, log the results
   console.log(results);
 });
 
-// Scrape data from LiveScience website and save to mongodb
+// Scrape data from NPR website and save to mongodb
 router.get("/scrape", function(req, res) {
   
   // Grab the body of the html with request
@@ -57,15 +58,10 @@ router.get("/scrape", function(req, res) {
       var result = {};
       
       
-      // result.title = $(element).text();
-      // // result.description saves text description
-      // result.description = $(element).children().attr("href");
-      
-      result.title = $(element).children("a").children("h2.title").html();
+      result.title = $(element).text().href();
       // result.description saves text description
-			result.description = $(element).children("div.date-posted").children("p.mod-copy").children("a").text();
-      
-      
+      result.link = $(element).children().attr("href");
+
       // Using our Article model, create a new entry
       var entry = new Article(result);
 
