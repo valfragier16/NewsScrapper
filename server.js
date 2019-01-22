@@ -18,6 +18,8 @@ mongoose.connect("mongodb://heroku_xd394bdd:ncntvcs1jnacmt48iaiodvflb7@ds161016.
 	
 });
 
+
+
 var db = mongoose.connection;
 
 var PORT = process.env.PORT || 3000;
@@ -65,59 +67,59 @@ app.get("/saved", function(req,res){
 	});
 });
 
-// app.get("/scrape", function(req,res){
-// 	request("https://www.nytimes.com/section/world", function(error,response, html){
-// 		var $ = cheerio.load(html);
-// 		$("article").each(function(i,element){
-// 			var result = {};
-// 			result.title = $(this).children("h2").text();
-// 			result.summary = $(this).children("p.summary").text();
-// 			result.link = $(this).children("h2").children("a").attr("href");
+app.get("/scrape", function(req,res){
+	request("https://www.nytimes.com/section/world", function(error,response, html){
+		var $ = cheerio.load(html);
+		$("article").each(function(i,element){
+			var result = {};
+			result.title = $(this).children("h2").text();
+			result.summary = $(this).children("p.summary").text();
+			result.link = $(this).children("h2").children("a").attr("href");
 
-// 			var entry = new Article(result);
+			var entry = new Article(result);
 
-// 			entry.save(function(err, doc){
-// 				if(err){
-// 					console.log(err);
-// 				}
-// 				else{
-// 					console.log(doc);
-// 				}
-// 			});
-// 		});
-// 		res.send("Scrape Complete");
-// 	});
-// });
-
-
-
-app.get("/scrape", function(req, res) {
-	request("https://www.livescience.com/space?type=article", function(error, response, html) {
-	  var $ = cheerio.load(html);
-	  $("h2").each(function(i, element) {
-		var result = {};
-		result.title = $(this).children("h2").text();
-		result.summary = $(this).children("p.summary").text();
-		result.link = $(this).children("h2").children("a").attr("href");
-  
-		var entry = new Article(result);
-  
-		entry.save(function(err, doc) {
-		  // Log any errors
-		  if (err) {
-			console.log(err);
-		  }
-		  // Or log the doc
-		  else {
-			console.log(doc);
-		  }
+			entry.save(function(err, doc){
+				if(err){
+					console.log(err);
+				}
+				else{
+					console.log(doc);
+				}
+			});
 		});
+		res.send("Scrape Complete");
+	});
+});
+
+
+
+// app.get("/scrape", function(req, res) {
+// 	request("https://www.livescience.com/space?type=article", function(error, response, html) {
+// 	  var $ = cheerio.load(html);
+// 	  $("h2").each(function(i, element) {
+// 		var result = {};
+// 		result.title = $(this).children("h2").text();
+// 		result.summary = $(this).children("p.summary").text();
+// 		result.link = $(this).children("h2").children("a").attr("href");
   
-	  });
-	  // Reload the page so that newly scraped articles will be shown on the page
-	  res.sendt("Scrape Complete");
-	});  
-  });
+// 		var entry = new Article(result);
+  
+// 		entry.save(function(err, doc) {
+// 		  // Log any errors
+// 		  if (err) {
+// 			console.log(err);
+// 		  }
+// 		  // Or log the doc
+// 		  else {
+// 			console.log(doc);
+// 		  }
+// 		});
+  
+// 	  });
+// 	  // Reload the page so that newly scraped articles will be shown on the page
+// 	  res.sendt("Scrape Complete");
+// 	});  
+//   });
 
 app.get("/articles", function(req,res){
 	Article.find({}).limit(20).exec(function(error, doc){
