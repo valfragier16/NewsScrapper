@@ -1,79 +1,28 @@
-body {
-    background-image: url("/assets/images/background.jpg");
-    padding-top: 70px;
+
+body{
+	background-image: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2015/06/shutterstock_105380324.jpg");
+	background-size: 100%; 
+	background-repeat: no-repeat; 
+	position:center; 
+	background-attachment: fixed;
+	/* background-attachment: auto; */
+	padding-top:70px;
+	color: white;
 }
 
-a#home, a.home, a#saved, a.saved {
-	color: #3273dc;
+.jumbotron{
+	background-color: transparent !important;
 }
 
-.dropdown {
-	display: none;
+.deleteNote {
+	display: inline-block;
 }
 
-#hero-title {
-	padding-bottom: 20px;
+.previousNotes {
+	display: inline-block;
+	width: 90%;
 }
 
-section.section {
-	padding-bottom: 0;
-	min-height: 100%;
+#scrape {
+	margin: 8px 0px;
 }
-
-div.container {
-	min-height: 100%;
-}
-
-div#scrape-results, div#saved-results {
-	min-height: 100%;
-	margin-bottom: 200px;
-}
-
-.result-text {
-	float: left;
-	width: 80%;
-	padding-bottom: 30px;
-}
-
-.save-article {
-	float: right;
-	margin-top: 25px;
-}
-
-.result-div {
- clear: both;
-}
-
-.saved-text {
-	float: left;
-	width: 70%;
-	padding-bottom: 30px;
-}
-
-.comments-button {
-	float: right;
-	margin-top: 25px;
-}
-
-.unsave-button {
-	float: right;
-	margin-top: 25px;
-	margin-left: 20px;
-}
-
-.saved-div {
- clear: both;
-}
-
-.footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	padding: 40px 0;
-}
-
-span.icon {
-	padding-right: 25px;
-	padding-left: 15px;
-}
-

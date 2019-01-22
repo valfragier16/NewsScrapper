@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <!--jQuery Link-->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!--Bootstrap Links-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  
-	<link rel="icon" href="http://www.sandhillschool.org/wp-content/uploads/2015/10/LS-splat.png" sizes="16x16" type="image/x-icon"/>
-  
-  <title>News Scraper</title>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<body>
-{{{body}}}
-</body>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!--CSS Style Sheet-->
+        <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+        
+
+        <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-512.png" sizes="16x16" type="image/png">
+
+
+        <title>NY Times News-Scraper</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="align-content:center;">
+                    <li><a href="/"><img src="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-512.png" alt="NYT icon" style="height:40px; width:40px;"></a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/saved">Saved Articles</a></li>
+                    <li><button type="button" class="btn btn-primary" id="scrape">Scrape Articles</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    {{{ body }}}
+
+        <!--External JS Link-->
+        <script src="/assets/js/app.js"></script>
+    </body>
 </html>

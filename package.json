@@ -1,27 +1,28 @@
 {
-  "name": "NewsScrapper",
+  "name": "newsscrapper",
   "version": "1.0.0",
   "description": "GW Homework Week 18",
-  "main": "index.js",
+  "main": "mongo_uri.js",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^5.3.16",
+    "mongoose": "^5.4.6",
+    "morgan": "^1.9.1",
     "request": "^2.88.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/valfragier16/NewsScrapper.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Valerie Fragier",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/valfragier16/NewsScrapper/issues"
