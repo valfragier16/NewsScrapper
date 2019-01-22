@@ -14,7 +14,7 @@ This app uses the technologies listed below:
 </ol>
 
 <h2>Demo</h2>
-NewsScrapper is deployed to Heroku. Please check it out <a href="https://news-scrapper18.herokuapp.com/" target="_blank">here</a>.
+NewsScrapper is deployed to Heroku. Please check it out <a href="https://newsscrapper18.herokuapp.com/" target="_blank">here</a>.
 
 
 <h2>Installation</h2>
