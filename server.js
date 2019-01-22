@@ -40,16 +40,15 @@ app.use(express.static("public"));
 // Database configuration with mongoose
 // var URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/news-scrapper18'; 
 // var MONGODB_URI = process.env.MONGODB_URI || localhost:27017/
-var URI = process.env.MLAB_URL || 'mongodb://localhost:27017/news-scrapper18';
-mongoose.connect(URI);
-var db = mongoose.connection;
-
-// // Database configuration with mongoose
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news-scrapper18";
-
-// mongoose.connect(MONGODB_URI);
+// var URI = process.env.MLAB_URL || 'mongodb://localhost:27017/news-scrapper18';
+// mongoose.connect(URI);
 // var db = mongoose.connection;
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
+mongoose.connect(MONGODB_URI);
+
+var db = mongoose.connection;
 
 // Show any mongoose errors
 db.on("error", function(error) {
